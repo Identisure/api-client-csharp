@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Idkollen.Client/Idkollen.Client.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Idkollen.Client.Tests/Idkollen.Client.Tests.csproj" />
+  </Folder>
+</Solution>
