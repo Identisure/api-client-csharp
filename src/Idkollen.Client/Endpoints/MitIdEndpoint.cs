@@ -13,6 +13,8 @@ public sealed class MitIdEndpoint
         => _transport.PostAsync<IMitIdStatus>("/v3/mitid/backchannel/auth", req, ct);
     public Task<IMitIdStatus> SignAsync(MitIdSignRequest req, CancellationToken ct = default)
         => _transport.PostAsync<IMitIdStatus>("/v3/mitid/sign", req, ct);
+    public Task<IAgeVerificationStatus> AgeVerificationAsync(AgeVerificationRequest req, CancellationToken ct = default)
+        => _transport.PostAsync<IAgeVerificationStatus>("/v3/mitid/age-verification", req, ct);
     public Task<IMitIdStatus> AuthStatusAsync(string id, CancellationToken ct = default)
         => _transport.GetAsync<IMitIdStatus>("/v3/mitid/auth/" + id, ct);
     public Task<IMitIdStatus> SignStatusAsync(string id, CancellationToken ct = default)
@@ -21,11 +23,27 @@ public sealed class MitIdEndpoint
         => _transport.DeleteAsync("/v3/mitid/auth/" + id, ct);
     public Task CancelSignAsync(string id, CancellationToken ct = default)
         => _transport.DeleteAsync("/v3/mitid/sign/" + id, ct);
+    public Task<IAgeVerificationStatus> AgeVerificationStatusAsync(string id, CancellationToken ct = default)
+        => _transport.GetAsync<IAgeVerificationStatus>("/v3/mitid/age-verification/" + id, ct);
+    public Task CancelAgeVerificationAsync(string id, CancellationToken ct = default)
+        => _transport.DeleteAsync("/v3/mitid/age-verification/" + id, ct);
 
     public Task<IMitIdStatus> WaitForAuthAsync(string id, PollOptions? opts = null, CancellationToken ct = default)
         => PollAsync(() => AuthStatusAsync(id, ct), opts, ct);
     public Task<IMitIdStatus> WaitForSignAsync(string id, PollOptions? opts = null, CancellationToken ct = default)
         => PollAsync(() => SignStatusAsync(id, ct), opts, ct);
+    public async Task<IAgeVerificationStatus> WaitForAgeVerificationAsync(string id, PollOptions? opts = null, CancellationToken ct = default)
+    {
+        opts ??= new PollOptions();
+        var deadline = DateTime.UtcNow + opts.EffectiveTimeout;
+        while (true)
+        {
+            var status = await AgeVerificationStatusAsync(id, ct).ConfigureAwait(false);
+            if (status is not AgeVerificationPending) return status;
+            if (DateTime.UtcNow >= deadline) throw new WaitException(timeout: true);
+            await Task.Delay(opts.EffectiveInterval, ct).ConfigureAwait(false);
+        }
+    }
 
     private static async Task<IMitIdStatus> PollAsync(Func<Task<IMitIdStatus>> fn, PollOptions? opts, CancellationToken ct)
     {
