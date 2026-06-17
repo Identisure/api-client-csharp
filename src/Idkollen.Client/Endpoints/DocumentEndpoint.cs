@@ -8,11 +8,8 @@ public sealed class DocumentEndpoint
     internal DocumentEndpoint(Transport transport) { _transport = transport; }
 
     public Task<DocumentUploadResponse> UploadAsync(byte[] data, string filename, string mimeType = "application/pdf", CancellationToken ct = default)
-        => _transport.PostMultipartAsync<DocumentUploadResponse>("/document", data, filename, mimeType, ct);
+        => _transport.PostMultipartAsync<DocumentUploadResponse>("/v3/document", data, filename, mimeType, ct);
 
     public Task<byte[]> DownloadAsync(string id, CancellationToken ct = default)
-        => _transport.GetRawAsync("/document/" + id, ct);
-
-    public Task DeleteAsync(string id, CancellationToken ct = default)
-        => _transport.DeleteAsync("/document/" + id, ct);
+        => _transport.GetRawAsync("/v3/document/" + id, ct);
 }

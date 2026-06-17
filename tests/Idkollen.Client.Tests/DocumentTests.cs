@@ -41,14 +41,4 @@ public class DocumentTests
         var result = await client.Document.DownloadAsync("doc1");
         Assert.Equal("\x25PDF-binary-bytes", Encoding.UTF8.GetString(result));
     }
-
-    [Fact]
-    public async Task Delete()
-    {
-        var (client, handler) = Build();
-        handler.Enqueue(HttpStatusCode.NoContent, "");
-        await client.Document.DeleteAsync("doc1");
-        Assert.Equal(HttpMethod.Delete, handler.LastRequest.Method);
-        Assert.Equal("/document/doc1", handler.LastRequest.RequestUri!.AbsolutePath);
-    }
 }
