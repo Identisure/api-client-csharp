@@ -25,10 +25,6 @@ public sealed record BankIdNoSignRequest
     public string? RedirectUrl { get; init; }
     public string? Text { get; init; }
     public List<string>? Documents { get; init; }
-    public bool? RequestSsn { get; init; }
-    public bool? RequestPhone { get; init; }
-    public bool? RequestEmail { get; init; }
-    public bool? RequestAddress { get; init; }
     public string? RefId { get; init; }
 }
 
