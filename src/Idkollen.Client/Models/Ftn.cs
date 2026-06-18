@@ -19,7 +19,7 @@ public sealed record FtnPending(string Id, string? RefId, string Url) : IFtnStat
 public sealed record FtnCompleted(
     string Id,
     string? RefId,
-    string Ssn,
+    string? Ssn,
     string Name,
     string GivenName,
     string Surname,

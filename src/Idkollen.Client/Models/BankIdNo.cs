@@ -47,7 +47,7 @@ public sealed record BankIdNoPending(
 public sealed record BankIdNoCompleted(
     string Id,
     string? RefId,
-    string Ssn,
+    string? Ssn,
     string Name,
     string GivenName,
     string Surname,

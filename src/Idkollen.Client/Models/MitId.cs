@@ -39,7 +39,7 @@ public sealed record MitIdPending(
 public sealed record MitIdCompleted(
     string Id,
     string? RefId,
-    string Ssn,
+    string? Ssn,
     string Name,
     string GivenName,
     string Surname,

@@ -30,7 +30,7 @@ public sealed record VippsPending(string Id, string? RefId, string? Url) : IVipp
 public sealed record VippsCompleted(
     string Id,
     string? RefId,
-    string Ssn,
+    string? Ssn,
     string Name,
     string GivenName,
     string Surname,
