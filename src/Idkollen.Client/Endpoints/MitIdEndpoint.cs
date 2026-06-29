@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Idkollen.Client.Models;
 
 namespace Idkollen.Client.Endpoints;
@@ -35,12 +36,12 @@ public sealed class MitIdEndpoint
     public async Task<IAgeVerificationStatus> WaitForAgeVerificationAsync(string id, PollOptions? opts = null, CancellationToken ct = default)
     {
         opts ??= new PollOptions();
-        var deadline = DateTime.UtcNow + opts.EffectiveTimeout;
+        var stopwatch = Stopwatch.StartNew();
         while (true)
         {
             var status = await AgeVerificationStatusAsync(id, ct).ConfigureAwait(false);
             if (status is not AgeVerificationPending) return status;
-            if (DateTime.UtcNow >= deadline) throw new WaitException(timeout: true);
+            if (stopwatch.Elapsed >= opts.EffectiveTimeout) throw new WaitException(timeout: true);
             await Task.Delay(opts.EffectiveInterval, ct).ConfigureAwait(false);
         }
     }
@@ -48,12 +49,12 @@ public sealed class MitIdEndpoint
     private static async Task<IMitIdStatus> PollAsync(Func<Task<IMitIdStatus>> fn, PollOptions? opts, CancellationToken ct)
     {
         opts ??= new PollOptions();
-        var deadline = DateTime.UtcNow + opts.EffectiveTimeout;
+        var stopwatch = Stopwatch.StartNew();
         while (true)
         {
             var status = await fn().ConfigureAwait(false);
             if (status is not MitIdPending) return status;
-            if (DateTime.UtcNow >= deadline) throw new WaitException(timeout: true);
+            if (stopwatch.Elapsed >= opts.EffectiveTimeout) throw new WaitException(timeout: true);
             await Task.Delay(opts.EffectiveInterval, ct).ConfigureAwait(false);
         }
     }

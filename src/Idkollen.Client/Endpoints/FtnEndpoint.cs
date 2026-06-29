@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Idkollen.Client.Models;
 
 namespace Idkollen.Client.Endpoints;
@@ -23,12 +24,12 @@ public sealed class FtnEndpoint
     public async Task<IFtnStatus> WaitForAuthAsync(string id, PollOptions? opts = null, CancellationToken ct = default)
     {
         opts ??= new PollOptions();
-        var deadline = DateTime.UtcNow + opts.EffectiveTimeout;
+        var stopwatch = Stopwatch.StartNew();
         while (true)
         {
             var status = await AuthStatusAsync(id, ct).ConfigureAwait(false);
             if (status is not FtnPending) return status;
-            if (DateTime.UtcNow >= deadline) throw new WaitException(timeout: true);
+            if (stopwatch.Elapsed >= opts.EffectiveTimeout) throw new WaitException(timeout: true);
             await Task.Delay(opts.EffectiveInterval, ct).ConfigureAwait(false);
         }
     }
@@ -36,12 +37,12 @@ public sealed class FtnEndpoint
     public async Task<IAgeVerificationStatus> WaitForAgeVerificationAsync(string id, PollOptions? opts = null, CancellationToken ct = default)
     {
         opts ??= new PollOptions();
-        var deadline = DateTime.UtcNow + opts.EffectiveTimeout;
+        var stopwatch = Stopwatch.StartNew();
         while (true)
         {
             var status = await AgeVerificationStatusAsync(id, ct).ConfigureAwait(false);
             if (status is not AgeVerificationPending) return status;
-            if (DateTime.UtcNow >= deadline) throw new WaitException(timeout: true);
+            if (stopwatch.Elapsed >= opts.EffectiveTimeout) throw new WaitException(timeout: true);
             await Task.Delay(opts.EffectiveInterval, ct).ConfigureAwait(false);
         }
     }
