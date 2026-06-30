@@ -94,6 +94,10 @@ internal sealed class Transport
             if (body.Length == 0) return default!;
             return JsonSerializer.Deserialize<T>(body, JsonOptions)!;
         }
+        catch (JsonException e)
+        {
+            throw new IdkollenException(0, e.Message);
+        }
         finally
         {
             resp.Dispose();
