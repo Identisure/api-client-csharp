@@ -4,6 +4,12 @@ namespace Idkollen.Client;
 
 public sealed class IdkollenClientBuilder
 {
+    // Shared so building many clients reuses one connection pool instead of exhausting sockets.
+    private static readonly HttpClient SharedHttpClient = new(new SocketsHttpHandler
+    {
+        PooledConnectionLifetime = TimeSpan.FromMinutes(2),
+    });
+
     private readonly string _clientId;
     private readonly string _clientSecret;
     private Idkollen.Client.Environment _environment = Idkollen.Client.Environment.Production;
@@ -36,7 +42,7 @@ public sealed class IdkollenClientBuilder
 
     public IdkollenClient Build()
     {
-        var http = _httpClient ?? new HttpClient();
+        var http = _httpClient ?? SharedHttpClient;
         var baseUrl = _baseUrl ?? _environment.BaseUrl();
         var jsonOptions = new JsonSerializerOptions
         {

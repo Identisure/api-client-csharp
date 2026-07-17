@@ -30,30 +30,22 @@ internal sealed class Transport
         return await SendAsync<T>(req, ct).ConfigureAwait(false);
     }
 
-    public Task<T> GetAsync<T>(string path, CancellationToken ct)
+    public async Task<T> GetAsync<T>(string path, CancellationToken ct)
     {
-        var req = BuildRequest(HttpMethod.Get, path);
-        return SendAsync<T>(req, ct);
+        using var req = BuildRequest(HttpMethod.Get, path);
+        return await SendAsync<T>(req, ct).ConfigureAwait(false);
     }
 
     public async Task<byte[]> GetRawAsync(string path, CancellationToken ct)
     {
         using var req = BuildRequest(HttpMethod.Get, path);
-        using var resp = await _http.SendAsync(req, ct).ConfigureAwait(false);
-        var body = await resp.Content.ReadAsByteArrayAsync(ct).ConfigureAwait(false);
-        if (!resp.IsSuccessStatusCode) throw await BuildErrorAsync(resp, body, ct).ConfigureAwait(false);
-        return body;
+        return await SendRawAsync(req, ct).ConfigureAwait(false);
     }
 
     public async Task DeleteAsync(string path, CancellationToken ct)
     {
         using var req = BuildRequest(HttpMethod.Delete, path);
-        using var resp = await _http.SendAsync(req, ct).ConfigureAwait(false);
-        if (!resp.IsSuccessStatusCode)
-        {
-            var body = await resp.Content.ReadAsByteArrayAsync(ct).ConfigureAwait(false);
-            throw await BuildErrorAsync(resp, body, ct).ConfigureAwait(false);
-        }
+        await SendRawAsync(req, ct).ConfigureAwait(false);
     }
 
     public async Task<T> PostMultipartAsync<T>(string path, byte[] data, string filename, string mimeType, CancellationToken ct)
@@ -77,30 +69,36 @@ internal sealed class Transport
 
     private async Task<T> SendAsync<T>(HttpRequestMessage req, CancellationToken ct)
     {
-        HttpResponseMessage resp;
+        var body = await SendRawAsync(req, ct).ConfigureAwait(false);
+        if (body.Length == 0) throw new IdkollenException(0, "Empty response body");
         try
         {
-            resp = await _http.SendAsync(req, ct).ConfigureAwait(false);
-        }
-        catch (HttpRequestException e)
-        {
-            throw new IdkollenException(0, e.Message);
-        }
-
-        try
-        {
-            var body = await resp.Content.ReadAsByteArrayAsync(ct).ConfigureAwait(false);
-            if (!resp.IsSuccessStatusCode) throw await BuildErrorAsync(resp, body, ct).ConfigureAwait(false);
-            if (body.Length == 0) return default!;
-            return JsonSerializer.Deserialize<T>(body, JsonOptions)!;
+            return JsonSerializer.Deserialize<T>(body, JsonOptions)
+                ?? throw new IdkollenException(0, "Null response body");
         }
         catch (JsonException e)
         {
-            throw new IdkollenException(0, e.Message);
+            throw new IdkollenException(0, e.Message, e);
         }
-        finally
+    }
+
+    private async Task<byte[]> SendRawAsync(HttpRequestMessage req, CancellationToken ct)
+    {
+        try
         {
-            resp.Dispose();
+            using var resp = await _http.SendAsync(req, ct).ConfigureAwait(false);
+            var body = await resp.Content.ReadAsByteArrayAsync(ct).ConfigureAwait(false);
+            if (!resp.IsSuccessStatusCode) throw await BuildErrorAsync(resp, body, ct).ConfigureAwait(false);
+            return body;
+        }
+        catch (HttpRequestException e)
+        {
+            throw new IdkollenException(0, e.Message, e);
+        }
+        // HttpClient.Timeout surfaces as a cancellation the caller did not request.
+        catch (TaskCanceledException e) when (!ct.IsCancellationRequested)
+        {
+            throw new IdkollenException(0, "Request timed out", e);
         }
     }
 
