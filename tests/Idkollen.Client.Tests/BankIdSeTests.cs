@@ -57,10 +57,10 @@ public class BankIdSeTests
     public async Task AuthFailed()
     {
         var (client, handler) = Build();
-        handler.Enqueue(HttpStatusCode.OK, new { status = "FAILED", id = "abc", error = "userCancel" });
+        handler.Enqueue(HttpStatusCode.OK, new { status = "FAILED", id = "abc", error = "CANCELLED" });
         var result = await client.BankIdSe.AuthAsync(new BankIdSeAuthRequest());
         var failed = Assert.IsType<BankIdSeFailed>(result);
-        Assert.Equal("userCancel", failed.Error);
+        Assert.Equal("CANCELLED", failed.Error);
     }
 
     [Fact]
@@ -69,7 +69,7 @@ public class BankIdSeTests
         var (client, handler) = Build();
         handler.Enqueue(HttpStatusCode.OK, new { status = "PENDING", id = "abc", hintCode = "outstandingTransaction" });
 
-        var result = await client.BankIdSe.PhoneAuthAsync(new BankIdSePhoneAuthRequest("199001011234", "user"));
+        var result = await client.BankIdSe.PhoneAuthAsync(new BankIdSePhoneAuthRequest("199001011234", "USER"));
 
         Assert.IsType<BankIdSePendingPhone>(result);
     }
