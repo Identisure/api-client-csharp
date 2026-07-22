@@ -95,11 +95,25 @@ public sealed record BankIdSeCompleted(
     string GivenName,
     string Surname,
     string? CertStartDate,
+    string OcspResponse,
+    string? Risk,
+    BankIdSeDevice? Device,
+    BankIdSeStepUp? StepUp,
     string? Address,
     string? CompanySignatoryText,
     string? AuthenticatedAt,
     string? SignedAt
 ) : IBankIdSeStatus, IBankIdSePhoneStatus;
+
+public sealed record BankIdSeDevice(
+    string? IpAddress,
+    string? Uhi
+);
+
+public sealed record BankIdSeStepUp(
+    bool? Mrtd,
+    bool? Face
+);
 
 public sealed record BankIdSeFailed(
     string Id,

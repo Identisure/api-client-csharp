@@ -46,6 +46,7 @@ public class BankIdSeTests
             name = "Test User",
             givenName = "Test",
             surname = "User",
+            ocspResponse = "MIIB",
         });
 
         var result = await client.BankIdSe.AuthAsync(new BankIdSeAuthRequest());
