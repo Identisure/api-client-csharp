@@ -39,7 +39,8 @@ public sealed record VippsCompleted(
     string? Address,
     string? BirthDate,
     string? Pid,
-    string? BankId
+    string? BankId,
+    string? AuthenticatedAt
 ) : IVippsStatus;
 
 public sealed record VippsFailed(string Id, string? RefId, string Error) : IVippsStatus;

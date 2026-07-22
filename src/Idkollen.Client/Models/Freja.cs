@@ -59,7 +59,9 @@ public sealed record FrejaCompleted(
     string GivenName,
     string Surname,
     string? Address,
-    string? CompanySignatoryText
+    string? CompanySignatoryText,
+    string? AuthenticatedAt,
+    string? SignedAt
 ) : IFrejaStatus;
 
 public sealed record FrejaFailed(string Id, string? RefId, string Error) : IFrejaStatus;

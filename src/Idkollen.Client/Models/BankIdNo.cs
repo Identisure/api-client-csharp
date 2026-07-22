@@ -54,7 +54,9 @@ public sealed record BankIdNoCompleted(
     string? Pid,
     string? BankId,
     BankIdNoSignResult? SignResult,
-    List<BankIdNoSignedDocument>? SignedDocuments
+    List<BankIdNoSignedDocument>? SignedDocuments,
+    string? AuthenticatedAt,
+    string? SignedAt
 ) : IBankIdNoStatus;
 
 public sealed record BankIdNoFailed(

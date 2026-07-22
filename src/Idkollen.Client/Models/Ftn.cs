@@ -28,7 +28,9 @@ public sealed record FtnCompleted(
     string? Address,
     string? BirthDate,
     string? Pid,
-    string? BankId
+    string? BankId,
+    string? BankName,
+    string? AuthenticatedAt
 ) : IFtnStatus;
 
 public sealed record FtnFailed(string Id, string? RefId, string Error) : IFtnStatus;

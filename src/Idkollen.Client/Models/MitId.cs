@@ -49,7 +49,9 @@ public sealed record MitIdCompleted(
     string? BirthDate,
     string? Pid,
     string? BankId,
-    MitIdSignResult? SignResult
+    MitIdSignResult? SignResult,
+    string? AuthenticatedAt,
+    string? SignedAt
 ) : IMitIdStatus;
 
 public sealed record MitIdFailed(string Id, string? RefId, string Error) : IMitIdStatus;

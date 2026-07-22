@@ -96,7 +96,9 @@ public sealed record BankIdSeCompleted(
     string Surname,
     string? CertStartDate,
     string? Address,
-    string? CompanySignatoryText
+    string? CompanySignatoryText,
+    string? AuthenticatedAt,
+    string? SignedAt
 ) : IBankIdSeStatus, IBankIdSePhoneStatus;
 
 public sealed record BankIdSeFailed(
