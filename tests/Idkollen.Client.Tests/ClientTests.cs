@@ -10,7 +10,7 @@ public class ClientTests
     public void BuilderProducesClient()
     {
         var client = new IdkollenClientBuilder("id", "secret")
-            .Environment(Idkollen.Client.Environment.Staging)
+            .Environment(IdkollenEnvironment.Staging)
             .Build();
         Assert.NotNull(client);
     }

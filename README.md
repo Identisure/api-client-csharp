@@ -25,7 +25,7 @@ using Idkollen.Client;
 using Idkollen.Client.Models;
 
 var client = new IdkollenClientBuilder("client_id", "client_secret")
-    .Environment(Environment.Staging)
+    .Environment(IdkollenEnvironment.Staging)
     .Build();
 
 var session = await client.BankIdSe.AuthAsync(new BankIdSeAuthRequest());

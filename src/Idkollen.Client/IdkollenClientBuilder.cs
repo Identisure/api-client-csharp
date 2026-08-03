@@ -12,7 +12,7 @@ public sealed class IdkollenClientBuilder
 
     private readonly string _clientId;
     private readonly string _clientSecret;
-    private Idkollen.Client.Environment _environment = Idkollen.Client.Environment.Production;
+    private IdkollenEnvironment _environment = IdkollenEnvironment.Production;
     private string? _baseUrl;
     private HttpClient? _httpClient;
 
@@ -22,7 +22,7 @@ public sealed class IdkollenClientBuilder
         _clientSecret = clientSecret;
     }
 
-    public IdkollenClientBuilder Environment(Idkollen.Client.Environment env)
+    public IdkollenClientBuilder Environment(IdkollenEnvironment env)
     {
         _environment = env;
         return this;
