@@ -56,6 +56,8 @@ public sealed record MitIdCompleted(
 
 public sealed record MitIdFailed(string Id, string? RefId, string Error) : IMitIdStatus;
 
+public sealed record MitIdUnknown(string Status) : IMitIdStatus;
+
 internal sealed class MitIdStatusConverter : JsonConverter<IMitIdStatus>
 {
     public override IMitIdStatus Read(ref Utf8JsonReader reader, Type _, JsonSerializerOptions options)
@@ -68,7 +70,8 @@ internal sealed class MitIdStatusConverter : JsonConverter<IMitIdStatus>
             "PENDING" => JsonSerializer.Deserialize<MitIdPending>(raw, options)!,
             "COMPLETED" => JsonSerializer.Deserialize<MitIdCompleted>(raw, options)!,
             "FAILED" => JsonSerializer.Deserialize<MitIdFailed>(raw, options)!,
-            _ => throw new JsonException($"Unknown mitid status: {status}"),
+            string other => new MitIdUnknown(other),
+            null => throw new JsonException("Missing mitid status"),
         };
     }
 

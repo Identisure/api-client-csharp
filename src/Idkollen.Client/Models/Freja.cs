@@ -66,6 +66,8 @@ public sealed record FrejaCompleted(
 
 public sealed record FrejaFailed(string Id, string? RefId, string Error) : IFrejaStatus;
 
+public sealed record FrejaUnknown(string Status) : IFrejaStatus;
+
 internal sealed class FrejaStatusConverter : JsonConverter<IFrejaStatus>
 {
     public override IFrejaStatus Read(ref Utf8JsonReader reader, Type _, JsonSerializerOptions options)
@@ -78,7 +80,8 @@ internal sealed class FrejaStatusConverter : JsonConverter<IFrejaStatus>
             "PENDING" => JsonSerializer.Deserialize<FrejaPending>(raw, options)!,
             "COMPLETED" => JsonSerializer.Deserialize<FrejaCompleted>(raw, options)!,
             "FAILED" => JsonSerializer.Deserialize<FrejaFailed>(raw, options)!,
-            _ => throw new JsonException($"Unknown freja status: {status}"),
+            string other => new FrejaUnknown(other),
+            null => throw new JsonException("Missing freja status"),
         };
     }
 

@@ -121,6 +121,8 @@ public sealed record BankIdSeFailed(
     string Error
 ) : IBankIdSeStatus, IBankIdSePhoneStatus;
 
+public sealed record BankIdSeUnknown(string Status) : IBankIdSeStatus, IBankIdSePhoneStatus;
+
 // --- Converters ---
 
 internal sealed class BankIdSeStatusConverter : JsonConverter<IBankIdSeStatus>
@@ -135,7 +137,8 @@ internal sealed class BankIdSeStatusConverter : JsonConverter<IBankIdSeStatus>
             "PENDING" => JsonSerializer.Deserialize<BankIdSePending>(raw, options)!,
             "COMPLETED" => JsonSerializer.Deserialize<BankIdSeCompleted>(raw, options)!,
             "FAILED" => JsonSerializer.Deserialize<BankIdSeFailed>(raw, options)!,
-            _ => throw new JsonException($"Unknown bankid-se status: {status}"),
+            string other => new BankIdSeUnknown(other),
+            null => throw new JsonException("Missing bankid-se status"),
         };
     }
 
@@ -155,7 +158,8 @@ internal sealed class BankIdSePhoneStatusConverter : JsonConverter<IBankIdSePhon
             "PENDING" => JsonSerializer.Deserialize<BankIdSePendingPhone>(raw, options)!,
             "COMPLETED" => JsonSerializer.Deserialize<BankIdSeCompleted>(raw, options)!,
             "FAILED" => JsonSerializer.Deserialize<BankIdSeFailed>(raw, options)!,
-            _ => throw new JsonException($"Unknown bankid-se phone status: {status}"),
+            string other => new BankIdSeUnknown(other),
+            null => throw new JsonException("Missing bankid-se phone status"),
         };
     }
 

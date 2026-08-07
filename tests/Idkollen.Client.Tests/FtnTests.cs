@@ -26,6 +26,16 @@ public class FtnTests
     }
 
     [Fact]
+    public async Task AuthUnknownStatus()
+    {
+        var (client, handler) = Build();
+        handler.Enqueue(HttpStatusCode.OK, new { status = "SOMETHING_NEW", id = "f1" });
+        var result = await client.Ftn.AuthStatusAsync("f1");
+        var unknown = Assert.IsType<FtnUnknown>(result);
+        Assert.Equal("SOMETHING_NEW", unknown.Status);
+    }
+
+    [Fact]
     public async Task AgeVerificationCompleted()
     {
         var (client, handler) = Build();

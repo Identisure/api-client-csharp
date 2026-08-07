@@ -65,6 +65,8 @@ public sealed record BankIdNoFailed(
     string Error
 ) : IBankIdNoStatus;
 
+public sealed record BankIdNoUnknown(string Status) : IBankIdNoStatus;
+
 internal sealed class BankIdNoStatusConverter : JsonConverter<IBankIdNoStatus>
 {
     public override IBankIdNoStatus Read(ref Utf8JsonReader reader, Type _, JsonSerializerOptions options)
@@ -77,7 +79,8 @@ internal sealed class BankIdNoStatusConverter : JsonConverter<IBankIdNoStatus>
             "PENDING" => JsonSerializer.Deserialize<BankIdNoPending>(raw, options)!,
             "COMPLETED" => JsonSerializer.Deserialize<BankIdNoCompleted>(raw, options)!,
             "FAILED" => JsonSerializer.Deserialize<BankIdNoFailed>(raw, options)!,
-            _ => throw new JsonException($"Unknown bankid-no status: {status}"),
+            string other => new BankIdNoUnknown(other),
+            null => throw new JsonException("Missing bankid-no status"),
         };
     }
 

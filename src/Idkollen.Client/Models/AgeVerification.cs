@@ -31,6 +31,8 @@ public sealed record AgeVerificationFailed(
     string Error
 ) : IAgeVerificationStatus;
 
+public sealed record AgeVerificationUnknown(string Status) : IAgeVerificationStatus;
+
 internal sealed class AgeVerificationStatusConverter : JsonConverter<IAgeVerificationStatus>
 {
     public override IAgeVerificationStatus Read(ref Utf8JsonReader reader, Type _, JsonSerializerOptions options)
@@ -43,7 +45,8 @@ internal sealed class AgeVerificationStatusConverter : JsonConverter<IAgeVerific
             "PENDING" => JsonSerializer.Deserialize<AgeVerificationPending>(raw, options)!,
             "COMPLETED" => JsonSerializer.Deserialize<AgeVerificationCompleted>(raw, options)!,
             "FAILED" => JsonSerializer.Deserialize<AgeVerificationFailed>(raw, options)!,
-            _ => throw new JsonException($"Unknown age verification status: {status}"),
+            string other => new AgeVerificationUnknown(other),
+            null => throw new JsonException("Missing age verification status"),
         };
     }
 

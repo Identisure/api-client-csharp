@@ -45,6 +45,8 @@ public sealed record VippsCompleted(
 
 public sealed record VippsFailed(string Id, string? RefId, string Error) : IVippsStatus;
 
+public sealed record VippsUnknown(string Status) : IVippsStatus;
+
 internal sealed class VippsStatusConverter : JsonConverter<IVippsStatus>
 {
     public override IVippsStatus Read(ref Utf8JsonReader reader, Type _, JsonSerializerOptions options)
@@ -57,7 +59,8 @@ internal sealed class VippsStatusConverter : JsonConverter<IVippsStatus>
             "PENDING" => JsonSerializer.Deserialize<VippsPending>(raw, options)!,
             "COMPLETED" => JsonSerializer.Deserialize<VippsCompleted>(raw, options)!,
             "FAILED" => JsonSerializer.Deserialize<VippsFailed>(raw, options)!,
-            _ => throw new JsonException($"Unknown vipps status: {status}"),
+            string other => new VippsUnknown(other),
+            null => throw new JsonException("Missing vipps status"),
         };
     }
 

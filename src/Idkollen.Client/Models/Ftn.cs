@@ -35,6 +35,8 @@ public sealed record FtnCompleted(
 
 public sealed record FtnFailed(string Id, string? RefId, string Error) : IFtnStatus;
 
+public sealed record FtnUnknown(string Status) : IFtnStatus;
+
 internal sealed class FtnStatusConverter : JsonConverter<IFtnStatus>
 {
     public override IFtnStatus Read(ref Utf8JsonReader reader, Type _, JsonSerializerOptions options)
@@ -47,7 +49,8 @@ internal sealed class FtnStatusConverter : JsonConverter<IFtnStatus>
             "PENDING" => JsonSerializer.Deserialize<FtnPending>(raw, options)!,
             "COMPLETED" => JsonSerializer.Deserialize<FtnCompleted>(raw, options)!,
             "FAILED" => JsonSerializer.Deserialize<FtnFailed>(raw, options)!,
-            _ => throw new JsonException($"Unknown ftn status: {status}"),
+            string other => new FtnUnknown(other),
+            null => throw new JsonException("Missing ftn status"),
         };
     }
 
