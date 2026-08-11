@@ -46,6 +46,14 @@ if (session is BankIdSePending pending)
 }
 ```
 
+### Verifying callbacks
+
+Verify the `X-Signature-SHA256` header against the raw request body before parsing it:
+
+```csharp
+var valid = CallbackSignature.Verify(rawBody, signatureHeader, "hmac_secret");
+```
+
 ## Development
 
 ### Prerequisites
