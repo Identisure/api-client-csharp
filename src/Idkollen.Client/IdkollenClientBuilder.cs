@@ -8,13 +8,17 @@ public sealed class IdkollenClientBuilder
     private static readonly HttpClient SharedHttpClient = new(new SocketsHttpHandler
     {
         PooledConnectionLifetime = TimeSpan.FromMinutes(2),
-    });
+    })
+    {
+        Timeout = System.Threading.Timeout.InfiniteTimeSpan,
+    };
 
     private readonly string _clientId;
     private readonly string _clientSecret;
     private IdkollenEnvironment _environment = IdkollenEnvironment.Production;
     private string? _baseUrl;
     private HttpClient? _httpClient;
+    private TimeSpan _timeout = TimeSpan.FromSeconds(30);
 
     public IdkollenClientBuilder(string clientId, string clientSecret)
     {
@@ -40,6 +44,14 @@ public sealed class IdkollenClientBuilder
         return this;
     }
 
+    /// <summary>Timeout for each HTTP request. Defaults to 30 seconds.</summary>
+    public IdkollenClientBuilder Timeout(TimeSpan timeout)
+    {
+        ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(timeout, TimeSpan.Zero);
+        _timeout = timeout;
+        return this;
+    }
+
     public IdkollenClient Build()
     {
         var http = _httpClient ?? SharedHttpClient;
@@ -57,7 +69,7 @@ public sealed class IdkollenClientBuilder
         jsonOptions.Converters.Add(new Models.MitIdStatusConverter());
         jsonOptions.Converters.Add(new Models.FtnStatusConverter());
         jsonOptions.Converters.Add(new Models.VippsStatusConverter());
-        var transport = new Transport(http, baseUrl, _clientId, _clientSecret, jsonOptions);
+        var transport = new Transport(http, baseUrl, _clientId, _clientSecret, jsonOptions, _timeout);
         return new IdkollenClient(transport);
     }
 }

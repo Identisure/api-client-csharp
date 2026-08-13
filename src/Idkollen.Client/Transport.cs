@@ -11,15 +11,17 @@ internal sealed class Transport
     private readonly HttpClient _http;
     private readonly string _baseUrl;
     private readonly string _authHeader;
+    private readonly TimeSpan _timeout;
     public JsonSerializerOptions JsonOptions { get; }
 
-    public Transport(HttpClient http, string baseUrl, string clientId, string clientSecret, JsonSerializerOptions jsonOptions)
+    public Transport(HttpClient http, string baseUrl, string clientId, string clientSecret, JsonSerializerOptions jsonOptions, TimeSpan timeout)
     {
         _http = http;
         _baseUrl = baseUrl.TrimEnd('/');
         var creds = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}"));
         _authHeader = $"Basic {creds}";
         JsonOptions = jsonOptions;
+        _timeout = timeout;
     }
 
     public async Task<T> PostAsync<T>(string path, object body, CancellationToken ct)
@@ -84,10 +86,12 @@ internal sealed class Transport
 
     private async Task<byte[]> SendRawAsync(HttpRequestMessage req, CancellationToken ct)
     {
+        using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        timeoutCts.CancelAfter(_timeout);
         try
         {
-            using var resp = await _http.SendAsync(req, ct).ConfigureAwait(false);
-            var body = await resp.Content.ReadAsByteArrayAsync(ct).ConfigureAwait(false);
+            using var resp = await _http.SendAsync(req, timeoutCts.Token).ConfigureAwait(false);
+            var body = await resp.Content.ReadAsByteArrayAsync(timeoutCts.Token).ConfigureAwait(false);
             if (!resp.IsSuccessStatusCode) throw await BuildErrorAsync(resp, body, ct).ConfigureAwait(false);
             return body;
         }
@@ -95,8 +99,8 @@ internal sealed class Transport
         {
             throw new IdkollenException(0, e.Message, e);
         }
-        // HttpClient.Timeout surfaces as a cancellation the caller did not request.
-        catch (TaskCanceledException e) when (!ct.IsCancellationRequested)
+        // The request timeout (ours or HttpClient.Timeout) surfaces as a cancellation the caller did not request.
+        catch (OperationCanceledException e) when (!ct.IsCancellationRequested)
         {
             throw new IdkollenException(0, "Request timed out", e);
         }

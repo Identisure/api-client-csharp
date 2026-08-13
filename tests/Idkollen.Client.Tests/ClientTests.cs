@@ -22,7 +22,7 @@ public class ClientTests
         handler.Enqueue(HttpStatusCode.OK, new { ok = true });
         var http = new HttpClient(handler);
         var jsonOptions = new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase };
-        var transport = new Transport(http, "https://example.test", "cid", "sec", jsonOptions);
+        var transport = new Transport(http, "https://example.test", "cid", "sec", jsonOptions, TimeSpan.FromSeconds(30));
 
         await transport.GetAsync<Dictionary<string, object>>("/v3/ping", default);
 
@@ -39,10 +39,44 @@ public class ClientTests
         handler.Enqueue(HttpStatusCode.BadRequest, new { message = "bad request" });
         var http = new HttpClient(handler);
         var jsonOptions = new System.Text.Json.JsonSerializerOptions();
-        var transport = new Transport(http, "https://x.test", "a", "b", jsonOptions);
+        var transport = new Transport(http, "https://x.test", "a", "b", jsonOptions, TimeSpan.FromSeconds(30));
 
         var ex = await Assert.ThrowsAsync<IdkollenException>(() => transport.PostAsync<object>("/v3/things", new { a = 1 }, default));
         Assert.Equal(400, ex.StatusCode);
         Assert.Equal("bad request", ex.Message);
+    }
+
+    [Fact]
+    public async Task TimeoutThrowsIdkollenException()
+    {
+        var client = new IdkollenClientBuilder("a", "b")
+            .BaseUrl("https://x.test")
+            .HttpClient(new HttpClient(new HangingHandler()))
+            .Timeout(TimeSpan.FromMilliseconds(50))
+            .Build();
+
+        var ex = await Assert.ThrowsAsync<IdkollenException>(() => client.Ftn.AuthStatusAsync("id"));
+        Assert.Equal("Request timed out", ex.Message);
+    }
+
+    [Fact]
+    public async Task CallerCancellationPropagates()
+    {
+        var client = new IdkollenClientBuilder("a", "b")
+            .BaseUrl("https://x.test")
+            .HttpClient(new HttpClient(new HangingHandler()))
+            .Build();
+        using var cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => client.Ftn.AuthStatusAsync("id", cts.Token));
+    }
+
+    private sealed class HangingHandler : HttpMessageHandler
+    {
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            await Task.Delay(System.Threading.Timeout.Infinite, cancellationToken);
+            throw new InvalidOperationException("Unreachable");
+        }
     }
 }
