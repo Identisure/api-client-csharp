@@ -58,16 +58,16 @@ var valid = CallbackSignature.Verify(rawBody, signatureHeader, "hmac_secret");
 
 ### Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/)
+- [.NET 10 SDK](https://dotnet.microsoft.com/)
 
 ### Build
 
 ```sh
-dotnet build Idkollen.Client.sln
+dotnet build Idkollen.Client.slnx
 ```
 
 ### Test
 
 ```sh
-dotnet test Idkollen.Client.sln
+dotnet test Idkollen.Client.slnx
 ```
