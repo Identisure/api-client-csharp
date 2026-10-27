@@ -9,11 +9,17 @@
     <Authors>Identisure</Authors>
     <Description>C# client for the Identisure REST API</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://developers.identisure.com</PackageProjectUrl>
+    <PackageTags>bankid;eid;identity;authentication</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/identisure/api-client-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="Identisure.Client.Tests" />
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+    <None Include="../../img/icon.png" Pack="true" PackagePath="/" />
   </ItemGroup>
 </Project>
