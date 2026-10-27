@@ -1,0 +1,47 @@
+using System.Net;
+using Identisure.Client.Models;
+using Xunit;
+
+namespace Identisure.Client.Tests;
+
+public class FtnTests
+{
+    private static (Identisure.Client.IdentisureClient Client, MockHttpMessageHandler Handler) Build()
+    {
+        var handler = new MockHttpMessageHandler();
+        var http = new HttpClient(handler);
+        var client = new Identisure.Client.IdentisureClientBuilder("cid", "sec")
+            .BaseUrl("https://x.test").HttpClient(http).Build();
+        return (client, handler);
+    }
+
+    [Fact]
+    public async Task AuthPending()
+    {
+        var (client, handler) = Build();
+        handler.Enqueue(HttpStatusCode.OK, new { status = "PENDING", id = "f1", url = "https://login" });
+        var result = await client.Ftn.AuthAsync(new FtnAuthRequest());
+        var p = Assert.IsType<FtnPending>(result);
+        Assert.Equal("https://login", p.Url);
+    }
+
+    [Fact]
+    public async Task AuthUnknownStatus()
+    {
+        var (client, handler) = Build();
+        handler.Enqueue(HttpStatusCode.OK, new { status = "SOMETHING_NEW", id = "f1" });
+        var result = await client.Ftn.AuthStatusAsync("f1");
+        var unknown = Assert.IsType<FtnUnknown>(result);
+        Assert.Equal("SOMETHING_NEW", unknown.Status);
+    }
+
+    [Fact]
+    public async Task AgeVerificationCompleted()
+    {
+        var (client, handler) = Build();
+        handler.Enqueue(HttpStatusCode.OK, new { status = "COMPLETED", id = "av1", ageVerified = true });
+        var result = await client.Ftn.AgeVerificationAsync(new AgeVerificationRequest { MinAge = 18 });
+        var done = Assert.IsType<AgeVerificationCompleted>(result);
+        Assert.True(done.AgeVerified);
+    }
+}
