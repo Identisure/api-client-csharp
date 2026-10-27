@@ -1,4 +1,4 @@
-<img align="left" height="100" style="margin-right: 10px;" src="../img/icon.png">
+<img align="left" height="100" style="margin-right: 10px;" src="img/icon.png">
 
 # Identisure C# / .NET Client
 
@@ -59,6 +59,9 @@ var valid = CallbackSignature.Verify(rawBody, signatureHeader, "hmac_secret");
 ### Prerequisites
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/)
+
+The tests use shared fixtures from a git submodule. Clone with `--recurse-submodules`, or run
+`git submodule update --init` in an existing clone.
 
 ### Build
 

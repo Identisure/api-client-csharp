@@ -9,7 +9,7 @@
     <Authors>Identisure</Authors>
     <Description>C# client for the Identisure REST API</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/identisure/idk-clients</RepositoryUrl>
+    <RepositoryUrl>https://github.com/identisure/api-client-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
