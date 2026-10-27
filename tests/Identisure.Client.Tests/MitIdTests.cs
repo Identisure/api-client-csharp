@@ -30,8 +30,12 @@ public class MitIdTests
         var (client, handler) = Build();
         handler.Enqueue(HttpStatusCode.OK, new
         {
-            status = "COMPLETED", id = "m1", ssn = "0101010000",
-            name = "Hans", givenName = "Hans", surname = "H",
+            status = "COMPLETED",
+            id = "m1",
+            ssn = "0101010000",
+            name = "Hans",
+            givenName = "Hans",
+            surname = "H",
             signResult = new { checksum = "abc123" },
         });
         var result = await client.MitId.SignStatusAsync("m1");

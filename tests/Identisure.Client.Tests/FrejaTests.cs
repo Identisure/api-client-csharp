@@ -31,8 +31,13 @@ public class FrejaTests
         var (client, handler) = Build();
         handler.Enqueue(HttpStatusCode.OK, new
         {
-            status = "COMPLETED", id = "f1", ssn = "199001011234",
-            country = "SE", name = "Test", givenName = "T", surname = "est",
+            status = "COMPLETED",
+            id = "f1",
+            ssn = "199001011234",
+            country = "SE",
+            name = "Test",
+            givenName = "T",
+            surname = "est",
         });
         var result = await client.Freja.AuthStatusAsync("f1");
         var c = Assert.IsType<FrejaCompleted>(result);
