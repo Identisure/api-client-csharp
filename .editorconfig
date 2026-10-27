@@ -11,6 +11,6 @@ indent_style = space
 indent_size = 4
 csharp_style_namespace_declarations = file_scoped:warning
 
-[*.{csproj,props,slnx,xml}]
+[*.{csproj,props,xml}]
 indent_style = space
 indent_size = 2

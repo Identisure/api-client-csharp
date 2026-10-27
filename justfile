@@ -1,12 +1,12 @@
 build:
-    dotnet build Identisure.Client.slnx
+    dotnet build Identisure.Client.sln
 
 test:
-    dotnet test Identisure.Client.slnx
+    dotnet test Identisure.Client.sln
 
 check:
-    dotnet format Identisure.Client.slnx --verify-no-changes
-    dotnet build Identisure.Client.slnx --no-restore /warnaserror
+    dotnet format Identisure.Client.sln --verify-no-changes
+    dotnet build Identisure.Client.sln --no-restore /warnaserror
 
 publish:
     dotnet pack src/Identisure.Client/Identisure.Client.csproj -c Release

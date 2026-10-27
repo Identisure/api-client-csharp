@@ -1,8 +1,0 @@
-<Solution>
-  <Folder Name="/src/">
-    <Project Path="src/Identisure.Client/Identisure.Client.csproj" />
-  </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/Identisure.Client.Tests/Identisure.Client.Tests.csproj" />
-  </Folder>
-</Solution>

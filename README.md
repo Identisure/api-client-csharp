@@ -72,7 +72,7 @@ var valid = CallbackSignature.Verify(rawBody, signatureHeader, "hmac_secret");
 
 ### Prerequisites
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/)
+- [.NET 8 SDK](https://dotnet.microsoft.com/)
 
 The tests use shared fixtures from a git submodule. Clone with `--recurse-submodules`, or run
 `git submodule update --init` in an existing clone.
@@ -80,13 +80,13 @@ The tests use shared fixtures from a git submodule. Clone with `--recurse-submod
 ### Build
 
 ```sh
-dotnet build Identisure.Client.slnx
+dotnet build Identisure.Client.sln
 ```
 
 ### Test
 
 ```sh
-dotnet test Identisure.Client.slnx
+dotnet test Identisure.Client.sln
 ```
 
 ## Other languages
