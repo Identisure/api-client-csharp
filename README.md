@@ -12,6 +12,20 @@
 
 API client for the [Identisure](https://developers.identisure.com) REST API.
 
+## Requirements
+
+.NET 8 or later.
+
+## Supported providers
+
+- **BankID SE**: auth, sign, phone auth and sign, QR verify, age verification
+- **BankID NO**: auth, backchannel auth, sign, age verification
+- **Freja eID**: auth, backchannel auth, sign, backchannel sign, age verification
+- **MitID**: auth, backchannel auth, sign, age verification
+- **FTN** (Finnish Trust Network): auth, age verification
+- **Vipps MobilePay**: auth, backchannel auth
+- **Documents**: upload and download documents for signing
+
 ## Installation
 
 ```sh
@@ -74,3 +88,7 @@ dotnet build Identisure.Client.slnx
 ```sh
 dotnet test Identisure.Client.slnx
 ```
+
+## Other languages
+
+[Dart](https://github.com/identisure/api-client-dart), [Go](https://github.com/identisure/api-client-go), [TypeScript/JavaScript](https://github.com/identisure/api-client-js), [Java/Kotlin](https://github.com/identisure/api-client-jvm), [PHP](https://github.com/identisure/api-client-php), [Python](https://github.com/identisure/api-client-py), [Ruby](https://github.com/identisure/api-client-ruby), [Rust](https://github.com/identisure/api-client-rust), [Swift](https://github.com/identisure/api-client-swift)
