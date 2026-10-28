@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Identisure C# / .NET Client | Identisure.Client </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Identisure C# / .NET Client | Identisure.Client ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Identisure/api-client-csharp/blob/main/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<img align="left" height="100" style="margin-right: 10px;" src="img/icon.png">
+<h1 id="identisure-c--net-client">Identisure C# / .NET Client</h1>
+<p><a href="https://www.nuget.org/packages/Identisure.Client"><img src="https://img.shields.io/nuget/v/Identisure.Client?style=flat-square" alt="NuGet version"></a>
+<a href="https://identisure.github.io/api-client-csharp"><img src="https://img.shields.io/badge/github-docs-orange?logo=github&amp;style=flat-square" alt="Documentation"></a>
+<a href="https://opensource.org/license/mit"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT license"></a></p>
+<p>API client for the <a href="https://developers.identisure.com">Identisure</a> REST API.</p>
+<p>Documentation: <a href="https://identisure.github.io/api-client-csharp">identisure.github.io/api-client-csharp</a></p>
+<h2 id="requirements">Requirements</h2>
+<p>.NET 8 or later.</p>
+<h2 id="supported-providers">Supported providers</h2>
+<ul>
+<li><strong>BankID SE</strong>: auth, sign, phone auth and sign, QR verify, age verification</li>
+<li><strong>BankID NO</strong>: auth, backchannel auth, sign, age verification</li>
+<li><strong>Freja eID</strong>: auth, backchannel auth, sign, backchannel sign, age verification</li>
+<li><strong>MitID</strong>: auth, backchannel auth, sign, age verification</li>
+<li><strong>FTN</strong> (Finnish Trust Network): auth, age verification</li>
+<li><strong>Vipps MobilePay</strong>: auth, backchannel auth</li>
+<li><strong>Documents</strong>: upload and download documents for signing</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<pre><code class="lang-sh">dotnet add package Identisure.Client
+</code></pre>
+<h2 id="usage">Usage</h2>
+<pre><code class="lang-csharp">using Identisure.Client;
+using Identisure.Client.Models;
+
+var client = new IdentisureClientBuilder(&quot;client_id&quot;, &quot;client_secret&quot;)
+    .Environment(IdentisureEnvironment.Staging)
+    .Build();
+
+var session = await client.BankIdSe.AuthAsync(new BankIdSeAuthRequest());
+if (session is BankIdSePending pending)
+{
+    Console.WriteLine($&quot;Session ID: {pending.Id}&quot;);
+
+    var result = await client.BankIdSe.WaitForAuthAsync(pending.Id);
+    switch (result)
+    {
+        case BankIdSeCompleted done:
+            Console.WriteLine($&quot;Authenticated: {done.Name} ({done.Ssn})&quot;);
+            break;
+        case BankIdSeFailed failed:
+            Console.WriteLine($&quot;Failed: {failed.Error}&quot;);
+            break;
+    }
+}
+</code></pre>
+<h3 id="verifying-callbacks">Verifying callbacks</h3>
+<p>Verify the <code>X-Signature-SHA256</code> header against the raw request body before parsing it:</p>
+<pre><code class="lang-csharp">var valid = CallbackSignature.Verify(rawBody, signatureHeader, &quot;hmac_secret&quot;);
+</code></pre>
+<h2 id="development">Development</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li><a href="https://dotnet.microsoft.com/">.NET 8 SDK</a></li>
+</ul>
+<p>The tests use shared fixtures from a git submodule. Clone with <code>--recurse-submodules</code>, or run
+<code>git submodule update --init</code> in an existing clone.</p>
+<h3 id="build">Build</h3>
+<pre><code class="lang-sh">dotnet build Identisure.Client.sln
+</code></pre>
+<h3 id="test">Test</h3>
+<pre><code class="lang-sh">dotnet test Identisure.Client.sln
+</code></pre>
+<h3 id="release">Release</h3>
+<p>Set the version in <code>src/Identisure.Client/Identisure.Client.csproj</code> and <code>src/Identisure.Client/Transport.cs</code> and commit. Then push a tag:</p>
+<pre><code class="lang-sh">git tag v0.1.0
+git push origin v0.1.0
+</code></pre>
+<p>The release workflow checks that the tag matches the version, runs CI, publishes to NuGet and creates a GitHub release.</p>
+<h2 id="other-languages">Other languages</h2>
+<p><a href="https://github.com/identisure/api-client-dart">Dart</a>, <a href="https://github.com/identisure/api-client-go">Go</a>, <a href="https://github.com/identisure/api-client-js">TypeScript/JavaScript</a>, <a href="https://github.com/identisure/api-client-jvm">Java/Kotlin</a>, <a href="https://github.com/identisure/api-client-php">PHP</a>, <a href="https://github.com/identisure/api-client-py">Python</a>, <a href="https://github.com/identisure/api-client-ruby">Ruby</a>, <a href="https://github.com/identisure/api-client-rust">Rust</a>, <a href="https://github.com/identisure/api-client-swift">Swift</a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Identisure/api-client-csharp/blob/main/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

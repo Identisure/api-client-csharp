@@ -1,0 +1,1186 @@
+{
+  "docfx_version": "2.81.0+ba844df625370a6bd7c1ecab0d0ec4d1d9128ac4",
+  "source_base_path": "/home/runner/work/api-client-csharp/api-client-csharp",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.CallbackSignature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.CallbackSignature.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.CallbackSignature",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Endpoints.BankIdNoEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Endpoints.BankIdNoEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Endpoints.BankIdNoEndpoint",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Endpoints.BankIdSeEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Endpoints.BankIdSeEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Endpoints.BankIdSeEndpoint",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Endpoints.DocumentEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Endpoints.DocumentEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Endpoints.DocumentEndpoint",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Endpoints.FrejaEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Endpoints.FrejaEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Endpoints.FrejaEndpoint",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Endpoints.FtnEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Endpoints.FtnEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Endpoints.FtnEndpoint",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Endpoints.MitIdEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Endpoints.MitIdEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Endpoints.MitIdEndpoint",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Endpoints.VippsEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Endpoints.VippsEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Endpoints.VippsEndpoint",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Endpoints.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Endpoints.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Endpoints",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.IdentisureClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.IdentisureClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.IdentisureClient",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.IdentisureClientBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.IdentisureClientBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.IdentisureClientBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.IdentisureEnvironment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.IdentisureEnvironment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.IdentisureEnvironment",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.IdentisureException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.IdentisureException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.IdentisureException",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.AgeVerificationCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.AgeVerificationCompleted.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.AgeVerificationCompleted",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.AgeVerificationFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.AgeVerificationFailed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.AgeVerificationFailed",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.AgeVerificationPending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.AgeVerificationPending.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.AgeVerificationPending",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.AgeVerificationRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.AgeVerificationRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.AgeVerificationRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.AgeVerificationUnknown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.AgeVerificationUnknown.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.AgeVerificationUnknown",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdNoAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdNoAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdNoAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdNoBackchannelAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdNoBackchannelAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdNoBackchannelAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdNoCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdNoCompleted.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdNoCompleted",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdNoFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdNoFailed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdNoFailed",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdNoPending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdNoPending.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdNoPending",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdNoSignRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdNoSignRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdNoSignRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdNoSignResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdNoSignResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdNoSignResult",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdNoSignedDocument.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdNoSignedDocument.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdNoSignedDocument",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdNoUnknown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdNoUnknown.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdNoUnknown",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSeAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSeAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSeAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSeCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSeCompleted.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSeCompleted",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSeDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSeDevice.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSeDevice",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSeFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSeFailed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSeFailed",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSePending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSePending.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSePending",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSePendingPhone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSePendingPhone.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSePendingPhone",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSePhoneAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSePhoneAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSePhoneAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSePhoneSignRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSePhoneSignRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSePhoneSignRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSeSignRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSeSignRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSeSignRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSeStepUp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSeStepUp.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSeStepUp",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSeUnknown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSeUnknown.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSeUnknown",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSeVerifyRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSeVerifyRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSeVerifyRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.BankIdSeVerifyResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.BankIdSeVerifyResponse.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.BankIdSeVerifyResponse",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.DocumentUploadResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.DocumentUploadResponse.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.DocumentUploadResponse",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FrejaAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FrejaAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FrejaAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FrejaBackchannelAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FrejaBackchannelAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FrejaBackchannelAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FrejaBackchannelSignRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FrejaBackchannelSignRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FrejaBackchannelSignRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FrejaCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FrejaCompleted.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FrejaCompleted",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FrejaFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FrejaFailed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FrejaFailed",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FrejaPending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FrejaPending.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FrejaPending",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FrejaSignRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FrejaSignRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FrejaSignRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FrejaUnknown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FrejaUnknown.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FrejaUnknown",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FtnAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FtnAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FtnAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FtnCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FtnCompleted.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FtnCompleted",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FtnFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FtnFailed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FtnFailed",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FtnPending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FtnPending.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FtnPending",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.FtnUnknown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.FtnUnknown.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.FtnUnknown",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.IAgeVerificationStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.IAgeVerificationStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.IAgeVerificationStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.IBankIdNoStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.IBankIdNoStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.IBankIdNoStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.IBankIdSePhoneStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.IBankIdSePhoneStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.IBankIdSePhoneStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.IBankIdSeStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.IBankIdSeStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.IBankIdSeStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.IFrejaStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.IFrejaStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.IFrejaStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.IFtnStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.IFtnStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.IFtnStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.IMitIdStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.IMitIdStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.IMitIdStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.IVippsStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.IVippsStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.IVippsStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.MitIdAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.MitIdAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.MitIdAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.MitIdBackchannelAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.MitIdBackchannelAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.MitIdBackchannelAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.MitIdCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.MitIdCompleted.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.MitIdCompleted",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.MitIdFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.MitIdFailed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.MitIdFailed",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.MitIdPending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.MitIdPending.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.MitIdPending",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.MitIdSignRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.MitIdSignRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.MitIdSignRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.MitIdSignResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.MitIdSignResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.MitIdSignResult",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.MitIdUnknown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.MitIdUnknown.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.MitIdUnknown",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.VippsAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.VippsAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.VippsAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.VippsBackchannelAuthRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.VippsBackchannelAuthRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.VippsBackchannelAuthRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.VippsCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.VippsCompleted.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.VippsCompleted",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.VippsFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.VippsFailed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.VippsFailed",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.VippsPending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.VippsPending.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.VippsPending",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.VippsUnknown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.VippsUnknown.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models.VippsUnknown",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.PollOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.PollOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.PollOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.WaitException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.WaitException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client.WaitException",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identisure.Client.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identisure.Client.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Identisure.Client",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "img/icon.png",
+      "output": {
+        "resource": {
+          "relative_path": "img/icon.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
