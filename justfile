@@ -10,3 +10,7 @@ check:
 
 publish:
     dotnet pack src/Identisure.Client/Identisure.Client.csproj -c Release
+
+gen-doc:
+    dotnet tool restore
+    dotnet docfx docfx.json

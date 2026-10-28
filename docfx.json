@@ -1,0 +1,18 @@
+{
+  "metadata": [
+    {
+      "src": [{ "files": ["src/Identisure.Client/Identisure.Client.csproj"] }],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [{ "files": ["index.md", "toc.yml", "api/*.yml"] }],
+    "resource": [{ "files": ["img/*"] }],
+    "output": "docs",
+    "template": ["default", "modern"],
+    "globalMetadata": {
+      "_appTitle": "Identisure.Client",
+      "_enableSearch": true
+    }
+  }
+}

@@ -4,3 +4,5 @@ obj/
 
 # IDE
 .idea/
+/api/
+/docs/

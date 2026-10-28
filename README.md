@@ -3,14 +3,19 @@
 # Identisure C# / .NET Client
 
 [![NuGet version][nuget-image]][nuget-url]
+[![Documentation][docs-image]][docs-url]
 [![MIT license][license-image]][license-url]
 
 [nuget-image]: https://img.shields.io/nuget/v/Identisure.Client?style=flat-square
 [nuget-url]: https://www.nuget.org/packages/Identisure.Client
+[docs-image]: https://img.shields.io/badge/github-docs-orange?logo=github&style=flat-square
+[docs-url]: https://identisure.github.io/api-client-csharp
 [license-image]: https://img.shields.io/badge/license-MIT-blue?style=flat-square
 [license-url]: https://opensource.org/license/mit
 
 API client for the [Identisure](https://developers.identisure.com) REST API.
+
+Documentation: [identisure.github.io/api-client-csharp](https://identisure.github.io/api-client-csharp)
 
 ## Requirements
 
